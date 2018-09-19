@@ -1,0 +1,68 @@
+<body>
+    <div class = "container">
+        <div class = "row">
+            <div class = "col">
+                <h5 class = "text-center">Columbia Photography Association and Client Expectations</h5>
+                <strong>What the client may expect:</strong>
+                <ol>
+                    <li>CPA will photograph at the location, date, and time specified below.</li>
+                    <li>CPA will deliver the minimum photograph requirement stated below.</li>
+                    <li>CPA will deliver the final product to the client within 7 days of the event date specified below via an online storage platform.</li>
+                    <li>The client will have unlimited but nonexclusive rights to reproduce the photos delivered. If the client would like exclusive rights to the photos, please contact a CPA representative.</li>
+                </ol>
+
+                <strong>What CPA expects:</strong>
+                <ol>
+                    <li>Payment for photography services rendered in the amount specified below within 10 business days of product delivery.</li>
+                    <li>Payment for any additional expenses necessary to enable the photographer to complete the expected services, including, but not limited to, transportation costs and event entrance passes within 10 business days after final product delivery.</li>
+                </ol>
+
+                <strong>Contingencies</strong>
+                <ol>
+                    <li>Rescheduling</li>
+                    <ul>
+                        <li>If CPA is notified of a change of date more than 48 hours before the event or portrait date specified below, CPA will not expect a late fee.</li>
+                        <li>If CPA is notified of the change of date 24 to 48 hours before the event or portrait date specified below, CPA will expect the delivery of a $15.00 late fee upon successful rescheduling.</li>
+                        <li>If CPA is notified of the change of date 0 to 24 hours before the event or portrait date specified below, CPA will expect the delivery of a $30.00 late fee upon successful rescheduling.</li>
+                        <li>The client may not expect that CPA will necessarily be able to accommodate a rescheduled event.</li>
+                        <li>The client may expect late fee to be waived if rescheduling occurred due to unfavorable weather-related and other conditions outside the client’s control, such as illness and unforeseen emergencies.</li>
+                    </ul>
+                    <li>Cancellation</li>
+                    <ul>
+                        <li>If CPA is notified of a cancellation 72 hours before the event or portrait date specified below, CPA will not expect a cancellation fee.</li>
+                        <li>If CPA is notified of a cancellation less than 72 hours before the event or portrait date specified below, CPA will expect a cancellation fee of $30.00.</li>
+                        <li>The client’s failure to meet the photographer at the date, time, and place specified below will be considered a cancellation. In this case, CPA will expect the $30.00 cancellation fee.</li>
+                    </ul>
+                    <li>Failure of timely delivery</li>
+                    <ul>
+                        <li>If CPA fails to deliver by the stated delivery date, CPA will not expect payment.</li>
+                    </ul>
+                    <li>Equipment malfunction</li>
+                    <ul>
+                        <li>In the event that an unforeseen equipment malfunction occurs and CPA fails to provide the expected services, CPA will no longer expect payment.</li>
+                    </ul>
+                    <li>Photography safety</li>
+                    <ul>
+                        <li>In the event that the photographer reasonably feels that his/her personal safety or comfort is at risk, CPA and the photographer may elect not to provide photography services upon notice to the client. If, on such basis, the photographer does not provide photography services, CPA will no longer expect payment.</li>
+                    </ul>
+                </ol>
+            </div>
+        </div>
+        <hr>
+        <div class = "row">
+            <div class = "col">
+                <u>Event or portrait specifications:</u>
+                <br>
+                Date: {}
+                <br>
+                Hourly Rate: {}
+                <br>
+                Total Duration: {} hours
+                <br>
+                Other Applicable Fees: {}
+                <br>
+                <strong>Total Payable Amount:</strong> {}
+            </div>
+        </div>
+    </div>
+</body>

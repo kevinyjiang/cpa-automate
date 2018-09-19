@@ -1,0 +1,69 @@
+<body>
+    <div class = "container">
+        <div class = "row justify-content-between">
+            <div class = "col">
+                <div style = "background: #5ea9cf; color: white; 
+                font-family: 'Futura'; font-size: 30px; letter-spacing: .3px; 
+                margin-top: 15px; width: 68%; padding: 20px;">
+                    <br><br>COLUMBIA<br>
+                    PHOTOGRAPHY<br>
+                    ASSOCIATION<br>
+                </div>
+            </div>
+            <div class = "col" style = "text-align: right; line-height: 1.2em;">
+                <h1 class = "display-4">INVOICE</h1>
+                <h3><small class = "text-muted">{}</small></h3>
+                <br>
+                <strong>Columbia Photography Association</strong>
+                <br> 2920 Broadway <br> New York, New York 10027 <br> United States <br>
+                <br>
+                www.columbia-photography.com
+            </div>
+        </div>
+        <hr>
+        <div class = "row justify-content-between" style = "margin-top: 20px">
+            <div class = "col">
+                <small class = "text-muted">BILL TO</small>
+                <br>
+                <br>{}<br>{}<br>{}
+            </div>
+            <div class = "col">
+                <div class = "row">
+                    <div class = "col text-right">Invoice Number:</div>
+                    <div class = "col">{}</div>
+                </div>
+                <div class = "row">
+                    <div class = "col text-right">Event Date:</div>
+                    <div class = "col">{}</div>
+                </div>
+                <div class = "row">
+                    <div class = "col text-right">Photographer:</div>
+                    <div class = "col">{}</div>
+                </div>
+                <div class = "row">
+                    <div class = "col text-right">Amount Due (USD):</div>
+                    <div class = "col"></div>
+                </div>
+            </div>
+        </div>
+        <table class = "table" style = "margin-top: 40px">
+            <thead>
+                <tr bgcolor= "#5ea9cf" style = "color:white;">
+                    <th scope = "col">Items</th>
+                    <th scope = "col">Quantity</th>
+                    <th scope = "col">Unit Price</th>
+                    <th scope = "col">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Total:</strong></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
