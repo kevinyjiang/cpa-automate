@@ -26,14 +26,16 @@ class ModelToPDFConverter(object):
             invoiceItems += str(item)
 
         with open('templates/invoice_template.txt', 'r') as f:
-            output = f.read().format(str(model.invoiceName), 
+            output = f.read().format(str(model.invoiceNumber), 
                                     str(model.clientName), 
                                     str(model.clientPhone), 
                                     str(model.clientEmail), 
-                                    str(model.invoiceNumber), 
+                                    str(model.invoiceName), 
                                     str(model.invoiceDate), 
                                     str(model.photographerName), 
-                                    str(invoiceItems)
+                                    str(model.totalAmount),
+                                    str(invoiceItems),
+                                    str(model.totalAmount)
                                     )
             filename = '{}_{}_Invoice.pdf'.format(model.invoiceNumber, model.invoiceName.replace(' ',''))
             pdfkit.from_string(output, filename, options=options, css=self.css)
@@ -59,6 +61,7 @@ class ModelToPDFConverter(object):
             pdfkit.from_string(output, filename, options=options, css=self.css)
 
         self.logger.info('Created {}'.format(filename))
+
 """
     def createWhatToExpect(self, model):
         self.logger.info('Creating What To Expect PDF...')
@@ -83,9 +86,11 @@ class ModelToPDFConverter(object):
         quantity = float(model.clientPaymentAmount.replace('$',''))/unitPrice
 
         with open('templates/what_to_expect_template.txt', 'r') as f:
-            output = f.read().format(model.eventDate, unitPrice, quantity, otherFees, model.clientPaymentAmount)
+            output = f.read().format(model.jobDate, 
+                                    unitPrice, quantity, otherFees, model.clientPaymentAmount)
             filename = '{}_{}_WhatToExpect.pdf'.format(model.jobNumber, model.eventName.replace(' ',''))
             pdfkit.from_string(release, filename, options=options, css=self.css)
 
         self.logger.info('Created {}'.format(filename))
 """
+

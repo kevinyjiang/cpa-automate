@@ -11,8 +11,7 @@
                 </div>
             </div>
             <div class = "col" style = "text-align: right; line-height: 1.2em;">
-                <h1 class = "display-4">INVOICE</h1>
-                <h3><small class = "text-muted">{}</small></h3>
+                <h1 class = "display-4">INVOICE #{}</h1>
                 <br>
                 <strong>Columbia Photography Association</strong>
                 <br> 2920 Broadway <br> New York, New York 10027 <br> United States <br>
@@ -24,12 +23,11 @@
         <div class = "row justify-content-between" style = "margin-top: 20px">
             <div class = "col">
                 <small class = "text-muted">BILL TO</small>
-                <br>
                 <br>{}<br>{}<br>{}
             </div>
             <div class = "col">
                 <div class = "row">
-                    <div class = "col text-right">Invoice Number:</div>
+                    <div class = "col text-right">Job Name:</div>
                     <div class = "col">{}</div>
                 </div>
                 <div class = "row">
@@ -42,7 +40,7 @@
                 </div>
                 <div class = "row">
                     <div class = "col text-right">Amount Due (USD):</div>
-                    <div class = "col"></div>
+                    <div class = "col"><strong>${}</strong></div>
                 </div>
             </div>
         </div>
@@ -61,7 +59,7 @@
                     <td></td>
                     <td></td>
                     <td><strong>Total:</strong></td>
-                    <td></td>
+                    <td><strong>${}</strong></td>
                 </tr>
             </tbody>
         </table>
