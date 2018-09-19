@@ -1,6 +1,5 @@
 import logging
 
-#Add stdout and file logging
 logger = logging.getLogger('main')
 logger.setLevel(logging.DEBUG)
 
@@ -26,45 +25,62 @@ from InvoiceItemModel import InvoiceItemModel
 
 if __name__ == '__main__':
 	logger.info("Starting script")
-	modelToPDFConverter = ModelToPDFConverter()
+	try:
+		modelToPDFConverter = ModelToPDFConverter()
 
-	invoiceNumber = input("Invoice #:")
-	while not invoiceNumber.isdigit():
-		invoiceNumber = input("Please enter an integer:")
+		invoiceNumber = input("Invoice #: ")
+		while not invoiceNumber.isdigit():
+			invoiceNumber = input("Please enter an integer: ")
 
-	invoiceName = input("Invoice name:")
-	invoiceDate = datetime.now().strftime("%m/%d/%Y")
+		invoiceName = input("Invoice name: ")
+		invoiceDate = datetime.now().strftime("%m/%d/%Y")
+		jobDate = input("Job Date: ")
 
-	clientName = input("Client name:")
-	clientEmail = input("Client email:")
-	while not validate_email(clientEmail):
-		clientEmail = input("Please enter a valid email:")
+		clientName = input("Client name: ")
+		clientEmail = input("Client email: ")
+		while not validate_email(clientEmail):
+			clientEmail = input("Please enter a valid email: ")
 
-	clientPhone = input("Client phone:")
-	photographerName = input("Photographer name:")
-	eventQuantity = input("Event quantity:")
-	portraitQuantity = input("Portrait quantity:")
-	photoboothQuantity = input("Photobooth quantity:") 
+		clientPhone = input("Client phone: ")
+		photographerName = input("Photographer name: ")
+		eventQuantity = input("Event quantity: ")
+		portraitQuantity = input("Portrait quantity: ")
+		photoboothQuantity = input("Photobooth quantity: ") 
 
-	model = InvoiceModel()
-	model.invoiceNumber = invoiceNumber
-	model.invoiceName = invoiceName
-	model.invoiceDate = invoiceDate
-	model.clientName = clientName
-	model.clientEmail = clientEmail
-	model.clientPhone = clientPhone
-	model.photographerName = photographerName
+		model = InvoiceModel()
+		model.invoiceNumber = invoiceNumber
+		model.invoiceName = invoiceName
+		model.invoiceDate = invoiceDate
+		model.jobDate = jobDate
+		model.clientName = clientName
+		model.clientEmail = clientEmail
+		model.clientPhone = clientPhone
+		model.photographerName = photographerName
 
-	if int(eventQuantity):
-		model.items.append(InvoiceItemModel('Event Photography', eventQuantity))
+		if eventQuantity:
+			model.items.append(InvoiceItemModel('Event Photography', eventQuantity))
 
-	if int(portraitQuantity): 
-		model.items.append(InvoiceItemModel('Portraiture', portraitQuantity))
+		if portraitQuantity: 
+			model.items.append(InvoiceItemModel('Portraiture', portraitQuantity))
 
-	if int(photoboothQuantity): 
-		model.items.append(InvoiceItemModel('Photobooth', photoboothQuantity))
+		if photoboothQuantity: 
+			model.items.append(InvoiceItemModel('Photobooth', photoboothQuantity))
 
-	modelToPDFConverter.createInvoice(model)
+
+		try:
+			modelToPDFConverter.createInvoice(model)
+			
+			modelToPDFConverter.createRelease(model)
+		except:
+			errorMsg = traceback.format_exc()
+			failureDao.addFailure(model, errorMsg)
+			logger.error("[PDF Conversion Error] %s", errorMsg)
+
+	except:
+		fatalMessage = traceback.format_exc()
+		logger.error("[Unknown Error] %s", fatalMessage)
+		failureDao.sendFatalError(fatalMessage)
+		logger.info("Ending Script Unsuccessfully")
 
 
 

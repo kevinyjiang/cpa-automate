@@ -39,7 +39,7 @@ class ModelToPDFConverter(object):
             pdfkit.from_string(output, filename, options=options, css=self.css)
 
         self.logger.info('Created {}'.format(filename))
-"""
+
     def createRelease(self, model):
         self.logger.info('Creating release PDF...')
 
@@ -54,12 +54,12 @@ class ModelToPDFConverter(object):
         }
 
         with open('templates/release_template.txt', 'r') as f:
-            output = f.read().format(model.invoiceName, model.invoiceDate)
-            filename = '{}_{}_Release.pdf'.format(model.jobNumber, model.eventName.replace(' ',''))
+            output = f.read().format(model.invoiceName, model.jobDate)
+            filename = '{}_{}_Release.pdf'.format(model.invoiceNumber, model.invoiceName.replace(' ',''))
             pdfkit.from_string(output, filename, options=options, css=self.css)
 
         self.logger.info('Created {}'.format(filename))
-
+"""
     def createWhatToExpect(self, model):
         self.logger.info('Creating What To Expect PDF...')
 

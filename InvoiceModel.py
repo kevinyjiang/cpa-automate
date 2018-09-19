@@ -4,6 +4,7 @@ class InvoiceModel(object):
         self.invoiceNumber = 0
         self.invoiceName = ""
         self.invoiceDate = ""
+        self.jobDate = ""
         self.clientName = ""
         self.clientEmail = ""
         self.clientPhone = ""
@@ -15,11 +16,13 @@ class InvoiceModel(object):
         return """Job Number: {},
                 Invoice Name: {},
                 Invoice Date: {},
+                Job Date: {},
                 Client Contact: {}, {}, {},
                 Photographer: {},
                 Items: {},""".format(str(self.invoiceNumber),
                             str(self.invoiceName),
                             str(self.invoiceDate),
+                            str(self.jobDate),
                             str(self.clientName),
                             str(self.clientEmail),
                             str(self.clientPhone),
