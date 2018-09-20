@@ -66,10 +66,13 @@ class DocumentUI:
 			row = Frame(self.root)
 			label = Label(row, width=15, text=field, anchor="w")
 			entry = Entry(row)
+			if field == 'Invoice Date':
+				entry.insert(0, datetime.now().strftime("%m/%d/%Y"))
 			row.pack(side=TOP, fill=X, padx=5, pady=5)
 			label.pack(side=LEFT)
 			entry.pack(side=RIGHT, expand=YES, fill=X)
 			entries.append((field, entry))
+
 		return entries
 
 	def generate_docs(self):
