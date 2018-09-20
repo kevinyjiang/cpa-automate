@@ -20,7 +20,7 @@ def toCamelCase(string):
 	result = ''.join(x for x in string.title() if not x.isspace()) 
 	return result[0].lower() + result[1:]
 
-def generate_docs(entries):
+def generate_docs(entries, invoice, release, whatToExpect):
 	modelToPDFConverter = ModelToPDFConverter()
 	model = InvoiceModel()
 
@@ -40,11 +40,12 @@ def generate_docs(entries):
 	if photoboothQuantity != '0' and photoboothQuantity != '': 
 		model.addItem("Photobooth", int(photoboothQuantity))
 
-	print(model)
-
-	modelToPDFConverter.createInvoice(model)	
-	modelToPDFConverter.createRelease(model)
-	modelToPDFConverter.createWhatToExpect(model)
+	if invoice:
+		modelToPDFConverter.createInvoice(model)	
+	if release:
+		modelToPDFConverter.createRelease(model)
+	if whatToExpect:
+		modelToPDFConverter.createWhatToExpect(model)
 
 
 if __name__ == "__main__":
@@ -53,7 +54,21 @@ if __name__ == "__main__":
 
 	entries = create_form(root, fields)
 
-	goButton = Button(root, text='Go', command=lambda: generate_docs(entries))
+	invoice = IntVar(value=1)
+	release = IntVar(value=1)
+	whatToExpect = IntVar(value=1)
+
+	invoiceButton = Checkbutton(root, text = "Invoice", variable = invoice, 
+					onvalue = 1, offvalue = 0)
+	releaseButton = Checkbutton(root, text = "Release", variable = release,
+					onvalue = 1, offvalue = 0)
+	whatToExpectButton = Checkbutton(root, text = "What to Expect", variable = whatToExpect,
+					onvalue = 1, offvalue = 0)
+	invoiceButton.pack(side=LEFT, padx=5, pady=5)
+	releaseButton.pack(side=LEFT, padx=5, pady=5)
+	whatToExpectButton.pack(side=LEFT, padx=5, pady=5)
+
+	goButton = Button(root, text='Go', command=lambda: generate_docs(entries, invoice.get(), release.get(), whatToExpect.get()))
 	goButton.pack(side=LEFT, padx=5, pady=5)
 	quitButton = Button(root, text='Quit', command=root.quit)
 	quitButton.pack(side=RIGHT, padx=5, pady=5)
