@@ -68,7 +68,8 @@ if __name__ == "__main__":
 	releaseButton.pack(side=LEFT, padx=5, pady=5)
 	whatToExpectButton.pack(side=LEFT, padx=5, pady=5)
 
-	goButton = Button(root, text='Go', command=lambda: generate_docs(entries, invoice.get(), release.get(), whatToExpect.get()))
+	goButton = Button(root, text='Go', command=lambda: generate_docs(entries, 
+		invoice.get(), release.get(), whatToExpect.get()))
 	goButton.pack(side=LEFT, padx=5, pady=5)
 	quitButton = Button(root, text='Quit', command=root.quit)
 	quitButton.pack(side=RIGHT, padx=5, pady=5)
