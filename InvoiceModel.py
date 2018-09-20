@@ -7,6 +7,7 @@ class InvoiceModel(object):
         self.invoiceName = ""
         self.invoiceDate = ""
         self.jobDate = ""
+        self.jobLocation = ""
         self.clientName = ""
         self.clientEmail = ""
         self.clientPhone = ""

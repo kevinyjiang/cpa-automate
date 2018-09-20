@@ -36,6 +36,7 @@ if __name__ == "__main__":
 		invoiceName = input("Invoice name: ")
 		invoiceDate = datetime.now().strftime("%m/%d/%Y")
 		jobDate = input("Job Date: ")
+		jobLocation = input("Job Location: ")
 
 		clientName = input("Client name: ")
 		clientEmail = input("Client email: ")
@@ -61,27 +62,29 @@ if __name__ == "__main__":
 		model.invoiceName = invoiceName
 		model.invoiceDate = invoiceDate
 		model.jobDate = jobDate
+		model.jobLocation = jobLocation
 		model.clientName = clientName
 		model.clientEmail = clientEmail
 		model.clientPhone = clientPhone
 		model.photographerName = photographerName
 
-		if eventQuantity:
+		if eventQuantity != '0':
 			model.addItem("Event Photography", int(eventQuantity))
 
-		if portraitQuantity: 
+		if portraitQuantity != '0': 
 			model.addItem("Portraiture", int(portraitQuantity))
 
-		if photoboothQuantity: 
+		if photoboothQuantity != '0': 
 			model.addItem("Photobooth", int(photoboothQuantity))
 
 		try:
 			modelToPDFConverter.createInvoice(model)
-			
+		
 			modelToPDFConverter.createRelease(model)
+
+			modelToPDFConverter.createWhatToExpect(model)
 		except:
 			errorMsg = traceback.format_exc()
-			failureDao.addFailure(model, errorMsg)
 			logger.error("[PDF Conversion Error] %s", errorMsg)
 
 	except:

@@ -5,8 +5,7 @@
                 <h5 class = "text-center">Columbia Photography Association and Client Expectations</h5>
                 <strong>What the client may expect:</strong>
                 <ol>
-                    <li>CPA will photograph at the location, date, and time specified below.</li>
-                    <li>CPA will deliver the minimum photograph requirement stated below.</li>
+                    <li>CPA will photograph at the location and date specified below.</li>
                     <li>CPA will deliver the final product to the client within 7 days of the event date specified below via an online storage platform.</li>
                     <li>The client will have unlimited but nonexclusive rights to reproduce the photos delivered. If the client would like exclusive rights to the photos, please contact a CPA representative.</li>
                 </ol>
@@ -51,17 +50,15 @@
         <hr>
         <div class = "row">
             <div class = "col">
-                <u>Event or portrait specifications:</u>
+                Shoot Date: {}
                 <br>
-                Date: {}
+                Shoot Location: {}
                 <br>
-                Hourly Rate: {}
+                Client Name: {}
                 <br>
-                Total Duration: {} hours
+                Photographer Name: {}
                 <br>
-                Other Applicable Fees: {}
-                <br>
-                <strong>Total Payable Amount:</strong> {}
+                <strong>Amount Due: ${}</strong>
             </div>
         </div>
     </div>

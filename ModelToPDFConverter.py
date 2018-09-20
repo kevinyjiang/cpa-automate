@@ -62,7 +62,7 @@ class ModelToPDFConverter(object):
 
         self.logger.info('Created {}'.format(filename))
 
-"""
+
     def createWhatToExpect(self, model):
         self.logger.info('Creating What To Expect PDF...')
 
@@ -76,21 +76,15 @@ class ModelToPDFConverter(object):
             'dpi': 1250
         }
 
-        unitPrice = 0
-
-        if model.jobType == 'Event':
-            unitPrice = 100
-        else:
-            unitPrice = 160
-
-        quantity = float(model.clientPaymentAmount.replace('$',''))/unitPrice
-
         with open('templates/what_to_expect_template.txt', 'r') as f:
-            output = f.read().format(model.jobDate, 
-                                    unitPrice, quantity, otherFees, model.clientPaymentAmount)
-            filename = '{}_{}_WhatToExpect.pdf'.format(model.jobNumber, model.eventName.replace(' ',''))
-            pdfkit.from_string(release, filename, options=options, css=self.css)
+            output = f.read().format(str(model.jobDate),
+                                    str(model.jobLocation), 
+                                    str(model.clientName),
+                                    str(model.photographerName),
+                                    str(model.totalAmount))
+            filename = '{}_{}_WhatToExpect.pdf'.format(model.invoiceNumber, model.invoiceName.replace(' ',''))
+            pdfkit.from_string(output, filename, options=options, css=self.css)
 
         self.logger.info('Created {}'.format(filename))
-"""
+
 
