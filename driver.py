@@ -68,13 +68,13 @@ if __name__ == "__main__":
 		model.clientPhone = clientPhone
 		model.photographerName = photographerName
 
-		if eventQuantity != '0':
+		if eventQuantity != '0' and eventQuantity != '': 
 			model.addItem("Event Photography", int(eventQuantity))
 
-		if portraitQuantity != '0': 
+		if portraitQuantity != '0' and portraitQuantity != '': 
 			model.addItem("Portraiture", int(portraitQuantity))
 
-		if photoboothQuantity != '0': 
+		if photoboothQuantity != '0' and photoboothQuantity != '': 
 			model.addItem("Photobooth", int(photoboothQuantity))
 
 		try:
