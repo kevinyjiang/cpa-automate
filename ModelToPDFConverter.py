@@ -1,5 +1,6 @@
 import pdfkit
 import logging
+import re
 
 class ModelToPDFConverter(object):
 
@@ -37,7 +38,7 @@ class ModelToPDFConverter(object):
                                     str(invoiceItems),
                                     str(model.totalAmount)
                                     )
-            filename = '{}_{}_Invoice.pdf'.format(model.invoiceNumber, model.invoiceName.replace(' ',''))
+            filename = '{}_{}_Invoice.pdf'.format(model.invoiceNumber, re.sub('[^ a-zA-Z0-9]', '', model.invoiceName))
             pdfkit.from_string(output, filename, options=options, css=self.css)
 
         self.logger.info('Created {}'.format(filename))
@@ -57,7 +58,7 @@ class ModelToPDFConverter(object):
 
         with open('document_templates/release_template.txt', 'r') as f:
             output = f.read().format(model.invoiceName, model.jobDate)
-            filename = '{}_{}_Release.pdf'.format(model.invoiceNumber, model.invoiceName.replace(' ',''))
+            filename = '{}_{}_Release.pdf'.format(model.invoiceNumber, re.sub('[^ a-zA-Z0-9]', '', model.invoiceName))
             pdfkit.from_string(output, filename, options=options, css=self.css)
 
         self.logger.info('Created {}'.format(filename))
@@ -82,7 +83,7 @@ class ModelToPDFConverter(object):
                                     str(model.clientName),
                                     str(model.photographerName),
                                     str(model.totalAmount))
-            filename = '{}_{}_WhatToExpect.pdf'.format(model.invoiceNumber, model.invoiceName.replace(' ',''))
+            filename = '{}_{}_WhatToExpect.pdf'.format(model.invoiceNumber, re.sub('[^ a-zA-Z0-9]', '', model.invoiceName))
             pdfkit.from_string(output, filename, options=options, css=self.css)
 
         self.logger.info('Created {}'.format(filename))
