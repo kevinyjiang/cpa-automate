@@ -1,6 +1,8 @@
 import pdfkit
 import logging
 import re
+import subprocess
+import os
 
 class ModelToPDFConverter(object):
 
@@ -40,6 +42,10 @@ class ModelToPDFConverter(object):
                                     )
             filename = '{}_{}_Invoice.pdf'.format(model.invoiceNumber, re.sub('[^ a-zA-Z0-9]', '', model.invoiceName))
             pdfkit.from_string(output, filename, options=options, css=self.css)
+            
+            if not os.path.isdir('output'):
+                subprocess.call(['mkdir', './output'])
+            subprocess.call(['mv', filename, './output/{}'.format(filename)])
 
         self.logger.info('Created {}'.format(filename))
 
@@ -60,6 +66,10 @@ class ModelToPDFConverter(object):
             output = f.read().format(model.invoiceName, model.jobDate)
             filename = '{}_{}_Release.pdf'.format(model.invoiceNumber, re.sub('[^ a-zA-Z0-9]', '', model.invoiceName))
             pdfkit.from_string(output, filename, options=options, css=self.css)
+
+            if not os.path.isdir('output'):
+                subprocess.call(['mkdir', './output'])
+            subprocess.call(['mv', filename, './output/{}'.format(filename)])
 
         self.logger.info('Created {}'.format(filename))
 
@@ -85,6 +95,10 @@ class ModelToPDFConverter(object):
                                     str(model.totalAmount))
             filename = '{}_{}_WhatToExpect.pdf'.format(model.invoiceNumber, re.sub('[^ a-zA-Z0-9]', '', model.invoiceName))
             pdfkit.from_string(output, filename, options=options, css=self.css)
+
+            if not os.path.isdir('output'):
+                subprocess.call(['mkdir', './output'])
+            subprocess.call(['mv', filename, './output/{}'.format(filename)])
 
         self.logger.info('Created {}'.format(filename))
 
