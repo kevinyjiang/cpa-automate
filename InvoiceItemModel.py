@@ -1,3 +1,5 @@
+import config
+
 class InvoiceItemModel(object):
 
     def __init__(self, itemType, quantity):
@@ -6,9 +8,9 @@ class InvoiceItemModel(object):
         self.unitPrice = 0
 
         if itemType == 'Portraiture':
-            self.unitPrice = 120
+            self.unitPrice = config.PORTRAIT_RATE
         else:
-            self.unitPrice = 100
+            self.unitPrice = config.EVENT_RATE
 
 
     def __str__(self):
