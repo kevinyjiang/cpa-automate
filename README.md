@@ -5,16 +5,16 @@ Generate paperwork for CPA freelance photo jobs
 
 1. Install Requirements
 
-`pip install -r requirements.txt`
+- `pip install -r requirements.txt`
 
 2. Create your config file config.py
 
-Config file consists of the following constants:
+    Config file consists of the following constants:
 
 - `EVENT_RATE`
 The rate for event jobs, $100/hr (2018).
 
-- `PORTRAIT RATE`
+- `PORTRAIT_RATE`
 The rate for portrait jobs, $120/hr (2018).
 
 - `CREDENTIALS_PATH`
