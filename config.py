@@ -5,3 +5,7 @@ EVENT_RATE = 100
 PORTRAIT_RATE = 120
 
 OUTPUT_DESTINATION = "./output"
+
+CREDENTIALS_PATH = "./credentials.json"
+
+SPREADSHEET_URL = ""

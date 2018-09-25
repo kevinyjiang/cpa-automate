@@ -1,2 +1,5 @@
+gspread
+oauth2client
+PyOpenSSL
 pdfkit
 validate_email

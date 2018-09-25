@@ -68,13 +68,13 @@ class ModelToPDFConverter(object):
             self.write_pdf(output, model, 'WhatToExpect')
 
     def write_pdf(self, output, model, document_type):
-        filename = "{}_{}_{}.pdf".format(model.invoiceNumber, re.sub("[^ a-zA-Z0-9]", "", model.invoiceName), document_type)
+        filename = "{}_{}_{}.pdf".format(model.invoiceNumber, ''.join(re.sub("[^ a-zA-Z0-9]", "", model.invoiceName).split()), document_type)
         pdfkit.from_string(output, filename, options=self.options, css=self.css)
 
         if not os.path.isdir(config.OUTPUT_DESTINATION):
             subprocess.call(["mkdir", config.OUTPUT_DESTINATION])
         subprocess.call(["mv", filename, "{}/{}".format(config.OUTPUT_DESTINATION, filename)])
-        
+        subprocess.call(["open", "{}/{}".format(config.OUTPUT_DESTINATION, filename)])
         self.logger.info("Created {}".format(filename))
 
 
