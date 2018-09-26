@@ -49,36 +49,11 @@ class DocumentUI:
 		"Job Location", "Client Name", "Client Email", "Client Phone", 
 		"Photographer Name", "Event Hours", "Portrait Hours", "Photobooth Hours"]
 
-		# Build text form
+		# Initialize text form
 		self.entries = self.create_form(self.fields)
 
-		# Checkboxes to specify which documents to generate, default all checked
-		self.checkboxes = Frame(self.root)
-
-		self.invoice = IntVar(value=1)
-		self.release = IntVar(value=1)
-		self.whatToExpect = IntVar(value=1)
-		self.invoiceButton = Checkbutton(self.checkboxes, text="Invoice", 
-			variable=self.invoice, onvalue=1, offvalue=0)
-		self.releaseButton = Checkbutton(self.checkboxes, text="Release", 
-			variable=self.release, onvalue=1, offvalue=0)
-		self.whatToExpectButton = Checkbutton(self.checkboxes, text="What to Expect", 
-			variable=self.whatToExpect, onvalue=1, offvalue=0)
-		self.invoiceButton.pack(side=LEFT, padx=5, pady=3)
-		self.releaseButton.pack(side=LEFT, padx=5, pady=3)
-		self.whatToExpectButton.pack(side=LEFT, padx=5, pady=3)
-		self.checkboxes.pack()
-		
-		# Regular buttons: Go, Autofill, Quit
-		self.regularButtons = Frame(self.root)
-
-		self.goButton = Button(self.regularButtons, text="Go", command=self.generate_docs)
-		self.autoFillButton = Button(self.regularButtons, text="AutoFill", command=self.autofill_gdrive)
-		self.quitButton = Button(self.regularButtons, text="Quit", command=self.destructor)
-		self.goButton.pack(side=LEFT, padx=8, pady=8)
-		self.autoFillButton.pack(side=LEFT, padx=8, pady=8)
-		self.quitButton.pack(side=LEFT, padx=8, pady=8)
-		self.regularButtons.pack()
+		# Initialize buttons
+		self.create_buttons()
 
 		self.root.mainloop()
 
@@ -93,13 +68,44 @@ class DocumentUI:
 			label = Label(row, width=15, text=field, anchor="w")
 			entry = Entry(row)
 			if field == "Invoice Date":
-				entry.insert(0, datetime.now().strftime("%-m/%-d/%Y"))
+				entry.insert(0, "{}/{}".format(datetime.now().strftime("%-m/%-d"), int(datetime.now().strftime("%-Y")) % 100))
 			row.pack(side=TOP, fill=X, padx=5, pady=5)
 			label.pack(side=LEFT)
 			entry.pack(side=RIGHT, expand=YES, fill=X)
 			entries.append((field, entry))
 
 		return entries
+
+	def create_buttons(self):
+		# Checkboxes to specify which documents to generate, default all checked
+		self.checkboxes = Frame(self.root)
+
+		self.invoice = IntVar(value=1)
+		self.release = IntVar(value=1)
+		self.whatToExpect = IntVar(value=1)
+
+		self.invoiceButton = Checkbutton(self.checkboxes, text="Invoice", variable=self.invoice, onvalue=1, offvalue=0)
+		self.releaseButton = Checkbutton(self.checkboxes, text="Release", variable=self.release, onvalue=1, offvalue=0)
+		self.whatToExpectButton = Checkbutton(self.checkboxes, text="What to Expect", variable=self.whatToExpect, onvalue=1, offvalue=0)
+
+		self.invoiceButton.pack(side=LEFT, padx=5, pady=3)
+		self.releaseButton.pack(side=LEFT, padx=5, pady=3)
+		self.whatToExpectButton.pack(side=LEFT, padx=5, pady=3)
+
+		self.checkboxes.pack()
+		
+		# Regular buttons: Go, Autofill, Quit
+		self.regularButtons = Frame(self.root)
+
+		self.goButton = Button(self.regularButtons, text="Go", command=self.generate_docs)
+		self.autoFillButton = Button(self.regularButtons, text="AutoFill", command=self.autofill_gdrive)
+		self.quitButton = Button(self.regularButtons, text="Quit", command=self.destructor)
+
+		self.goButton.pack(side=LEFT, padx=8, pady=8)
+		self.autoFillButton.pack(side=LEFT, padx=8, pady=8)
+		self.quitButton.pack(side=LEFT, padx=8, pady=8)
+
+		self.regularButtons.pack()
 
 	def generate_docs(self):
 		logger.info("Go button pressed...")
@@ -124,10 +130,8 @@ class DocumentUI:
 		# Add invoice items to model
 		if eventQuantity != "0" and eventQuantity != "":
 			model.addItem("Event Photography", int(eventQuantity))
-
 		if portraitQuantity != "0" and portraitQuantity != "": 
 			model.addItem("Portraiture", int(portraitQuantity))
-
 		if photoboothQuantity != "0" and photoboothQuantity != "": 
 			model.addItem("Photobooth", int(photoboothQuantity))
 
