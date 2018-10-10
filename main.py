@@ -55,10 +55,15 @@ class DocumentUI:
 		# Initialize buttons
 		self.create_buttons()
 
+		# Keeps track of child windows
+		self.children = []
+
 		self.root.mainloop()
 
 	def destructor(self):
 		logging.info("Shutting down...")
+		for child in self.children:
+			child.destroy()
 		self.root.destroy()
 
 	def create_form(self, fields):
@@ -200,6 +205,7 @@ class DocumentUI:
 	    message.pack(side="top", fill="x", padx=10, pady=5)
 	    okButton = Button(popup, text="Ok senpai", command = popup.destroy)
 	    okButton.pack(pady=5)
+	    self.children.append(popup)
 	    popup.mainloop()
 
 if __name__ == "__main__":
